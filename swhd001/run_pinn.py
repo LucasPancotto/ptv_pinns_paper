@@ -16,8 +16,8 @@ import random
 params = Run()
 params.add_params(f"data/dset.py")
 
-# NN params
-layers = [4]+[params.hu]*params.layers+[4]
+# NN params din and dout =3
+layers = [3]+[params.hu]*params.layers+[3]
 
 # Load data
 X_data, Y_data = generate_data(params)
@@ -33,7 +33,7 @@ onorm = [means, stds]
 # Optimizer scheduler
 dsteps = params.depochs*len(X_data)/params.mbsize
 params.lr = keras.optimizers.schedules.ExponentialDecay(params.lr,
-                                                        dsteps, 
+                                                        dsteps,
                                                         params.drate)
 
 # Initialize model
